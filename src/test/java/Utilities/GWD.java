@@ -2,6 +2,7 @@ package Utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -34,7 +35,14 @@ public class GWD {
                     threadDriver.set(new EdgeDriver());
                     break;
                 default:
-                    threadDriver.set(new ChromeDriver());  //bulunduğum hatta driver yok idi, ben bir tane set ettim
+
+                    if (isRunningOnJenkins()) { //program jenkins den mi çalışıyor
+                        ChromeOptions options = new ChromeOptions();
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+
+                        threadDriver.set(new ChromeDriver(options));  //bulunduğum hatta driver yok idi, ben bir tane set ettim
+                    } else
+                        threadDriver.set(new ChromeDriver());
             }
 
             threadDriver.get().manage().window().maximize();
@@ -42,6 +50,12 @@ public class GWD {
         }
 
         return threadDriver.get();
+    }
+
+
+    public static boolean isRunningOnJenkins() {
+        String jenkinsHome = System.getenv("JENKINS_HOME");
+        return jenkinsHome != null && !jenkinsHome.isEmpty();
     }
 
 
