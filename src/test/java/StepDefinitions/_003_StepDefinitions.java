@@ -30,7 +30,7 @@ public class _003_StepDefinitions {
 
     @And("The user clicks to assignments")
     public void theUserClicksToAssignments() {
-        Tools.Bekle(3);
+        Tools.Bekle(1);
         dialogContent.myClick(dialogContent.assignments);
     }
 
