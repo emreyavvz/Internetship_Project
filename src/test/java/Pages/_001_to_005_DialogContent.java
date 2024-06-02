@@ -68,6 +68,9 @@ public class _001_to_005_DialogContent extends ParentPage {
     @FindBy(xpath = "//*[@id='mat-menu-panel-5']/div/button[4]")
     public WebElement trash;
 
+    @FindBy(xpath = "//*[@id=\"ms-table-1\"]/div/cdk-virtual-scroll-viewport/div[1]/table/tbody/tr[1]/td[3]/div/div")
+    public WebElement outboxMessage;
+
     @FindBy(css = "#\\32  > div > div > subscribers-dialog > ms-dialog > ms-dialog-buttons > mat-dialog-actions > ms-button:nth-child(1) > button")
     public WebElement add;
 
@@ -82,6 +85,15 @@ public class _001_to_005_DialogContent extends ParentPage {
 
     @FindBy(xpath = "//*[@id=\"tinymce\"]")
     public WebElement messageTextField;
+
+    @FindBy(xpath = "//*[@id=\"container-3\"]/app-user-message-form/mat-card/div/div[1]/ms-button/button")
+    public WebElement addRecievers;
+
+    @FindBy(xpath = "//*[@id=\"mat-input-3\"]")
+    public WebElement recieverInput;
+
+    @FindBy(xpath = "//*[@id=\"ms-table-0\"]/div/cdk-virtual-scroll-viewport/div[1]/table/tbody/tr[3]")
+    public WebElement student1;
 
     @FindBy(xpath = "//*[@id=\"container-3\"]/app-user-message-form/mat-card/div/div[3]/file-upload/div/div[2]/ms-button/button")
     public WebElement attachFiles;
